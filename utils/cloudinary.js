@@ -19,23 +19,9 @@ const cloudinaryUploader = async (localfilepath) => {
         return response
     } catch (error) {
         fs.unlinkSync(localfilepath) // remove the locally saved temporary file as the operation got failed
+        return null
     }
 
 }
 export { cloudinaryUploader }
 
-
-
-
-// Upload an image
-const uploadResult = await cloudinary.uploader
-    .upload(
-        'https://res.cloudinary.com/demo/image/upload/getting-started/shoes.jpg', {
-        public_id: 'shoes',
-    }
-    )
-    .catch((error) => {
-        console.log(error);
-    });
-
-console.log(uploadResult)
