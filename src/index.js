@@ -1,10 +1,18 @@
 // require('dotenv').config({path:'./env'})
-import dbConnect from "./db/index.js";
 import dotenv from "dotenv";
+// Load environment variables from .env file
+dotenv.config({
+    path: './.env'
+});
+
+import dbConnect from "./db/index.js";
 import app from "./app.js";
 
-// Load environment variables from .env file
-dotenv.config();
+console.log('Environment Variables from index:', {
+    CLOUDINARY_CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME,
+    CLOUDINARY_API_KEY: process.env.CLOUDINARY_API_KEY,
+    CLOUDINARY_API_SECRET: process.env.CLOUDINARY_API_SECRET
+});
 
 dbConnect()
     .then(() => {
